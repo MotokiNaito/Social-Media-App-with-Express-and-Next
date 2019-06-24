@@ -9,7 +9,8 @@
     "build": "next build",
     "deploy": "now --public",
     "alias": "now alias",
-    "remove:deploy": "now rm next-connect"
+    "remove:deploy": "now rm next-connect",
+    "heroku-postbuild": "next build"
   },
   "keywords": [],
   "author": "",
