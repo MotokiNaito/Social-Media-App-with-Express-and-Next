@@ -1,4 +1,3 @@
-/* Next.js / MUI integration here: https://github.com/mui-org/material-ui/tree/master/examples/nextjs */
 import App, { Container } from "next/app";
 import Head from "next/head";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
@@ -31,21 +30,10 @@ class MyApp extends App {
           <title>NextConnect</title>
         </Head>
         {/* Wrap every page in Jss and Theme providers */}
-        <JssProvider
-          registry={this.pageContext.sheetsRegistry}
-          generateClassName={this.pageContext.generateClassName}
-        >
-          {/* MuiThemeProvider makes the theme available down the React
-              tree thanks to React context. */}
-          <MuiThemeProvider
-            theme={this.pageContext.theme}
-            sheetsManager={this.pageContext.sheetsManager}
-          >
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <JssProvider registry={this.pageContext.sheetsRegistry} generateClassName={this.pageContext.generateClassName}>
+          <MuiThemeProvider theme={this.pageContext.theme} sheetsManager={this.pageContext.sheetsManager}>
             <CssBaseline />
             <Navbar {...this.props} />
-            {/* Pass pageContext to the _document though the renderPage enhancer
-                to render collected styles on server side. */}
             <Component pageContext={this.pageContext} {...pageProps} />
           </MuiThemeProvider>
         </JssProvider>

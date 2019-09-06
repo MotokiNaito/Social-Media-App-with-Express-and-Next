@@ -24,7 +24,7 @@ const ActiveLink = ({ router, href, children }) => {
           margin: 0,
           padding: 0,
           fontWeight: isCurrentPath ? "bold" : "normal",
-          color: isCurrentPath ? "#C62828" : "#fff"
+          color: isCurrentPath ? "yellow" : "#fff"
         }}
       >
         {children}

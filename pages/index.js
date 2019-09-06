@@ -34,16 +34,19 @@ const Index = ({ classes, auth }) => (
     ) : (
       // Splash Page (UnAuth Page)
       <Grid justify="center" alignItems="center" direction="row" container className={classes.heroContent}>
-        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          A Better Social Network
-        </Typography>
-        <Typography variant="h6" align="center" color="textSecondary" component="p">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime nesciunt suscipit voluptas harum commodi fugiat ab, rem facilis alias veritatis labore totam nihil! Distinctio veniam
-          consectetur vitae magni. Dolorem, necessitatibus.
-        </Typography>
-        <Button className={classes.fabButton} variant="extendedFab" color="primary" onClick={() => Router.push("/signup")}>
-          Get Started
-        </Button>
+        <Grid item xs={12} sm={12} md={12}>
+          <Typography component="h1" variant="h2" gutterBottom>
+            A Better Social Network
+          </Typography>
+          <Typography variant="h6" component="p">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime nesciunt suscipit voluptas harum commodi fugiat ab, rem facilis alias veritatis labore totam nihil! Distinctio veniam
+            consectetur vitae magni. Dolorem, necessitatibus.
+          </Typography>
+          <Button className={classes.fabButton} variant="extendedFab" onClick={() => Router.push("/signup")}>
+            Get Started
+          </Button>
+        </Grid>
+        <Grid>image</Grid>
       </Grid>
     )}
   </main>
@@ -77,10 +80,9 @@ const styles = theme => ({
     width: 350
   },
   fabButton: {
-    margin: theme.spacing.unit * 3
+    margin: "3rem 0"
   },
   heroContent: {
-    maxWidth: 600,
     paddingTop: theme.spacing.unit * 8,
     paddingBottom: theme.spacing.unit * 6,
     margin: "0 auto"

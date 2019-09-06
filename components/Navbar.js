@@ -7,6 +7,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 import ActiveLink from "./ActiveLink";
 import { signoutUser } from "../lib/auth";
+import color from "@material-ui/core/colors/blueGrey";
 
 const Navbar = ({ classes, router, pageProps: { auth } }) => {
   const { user = {} } = auth || {};
@@ -14,7 +15,6 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
   return (
     <AppBar className={classes.appBar} position={router.pathname === "/" ? "fixed" : "static"}>
       <Toolbar>
-        {/* Main Title / Home Button */}
         <ActiveLink href="/">
           <ShareOutlined className={classes.icon} />
         </ActiveLink>
@@ -50,7 +50,6 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
 
 const styles = theme => ({
   appBar: {
-    // z-index 1 higher than the fixed drawer in home page to clip it under the navigation
     zIndex: theme.zIndex.drawer + 1
   },
   toolbarTitle: {
