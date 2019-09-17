@@ -33,8 +33,8 @@ const Index = ({ classes, auth }) => (
       </Grid>
     ) : (
       // Splash Page (UnAuth Page)
-      <Grid justify="center" alignItems="center" direction="row" container className={classes.heroContent}>
-        <Grid item xs={12} sm={12} md={12}>
+      <Grid justify="space-between" alignItems="center" direction="row" container className={classes.heroContent}>
+        <Grid item xs={12} sm={12} md={4}>
           <Typography component="h1" variant="h2" gutterBottom>
             A Better Social Network
           </Typography>
@@ -42,11 +42,13 @@ const Index = ({ classes, auth }) => (
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime nesciunt suscipit voluptas harum commodi fugiat ab, rem facilis alias veritatis labore totam nihil! Distinctio veniam
             consectetur vitae magni. Dolorem, necessitatibus.
           </Typography>
-          <Button className={classes.fabButton} variant="extendedFab" onClick={() => Router.push("/signup")}>
+          <Button className={classes.fabButton} variant="outlined" onClick={() => Router.push("/signup")}>
             Get Started
           </Button>
         </Grid>
-        <Grid>image</Grid>
+        <Grid className={classes.mainImageContainer} item xs={12} sm={12} md={7}>
+          <div className={classes.mainImage} style={{ backgroundImage: `url('/static/images/next-connect.jpg')` }} />
+        </Grid>
       </Grid>
     )}
   </main>
@@ -54,11 +56,7 @@ const Index = ({ classes, auth }) => (
 
 const styles = theme => ({
   root: {
-    paddingTop: theme.spacing.unit * 10,
-    paddingLeft: theme.spacing.unit * 5,
-    [theme.breakpoints.down("sm")]: {
-      paddingRight: theme.spacing.unit * 5
-    }
+    paddingLeft: theme.spacing.unit * 10
   },
   progressContainer: {
     height: "80vh"
@@ -84,8 +82,19 @@ const styles = theme => ({
   },
   heroContent: {
     paddingTop: theme.spacing.unit * 8,
-    paddingBottom: theme.spacing.unit * 6,
     margin: "0 auto"
+  },
+  mainImageContainer: {
+    position: "relative",
+    height: "calc(100vh - 64px)"
+  },
+  mainImage: {
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    backgroundSize: "cover"
   }
 });
 
