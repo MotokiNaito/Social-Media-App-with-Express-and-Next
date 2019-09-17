@@ -116,7 +116,7 @@ class PostFeed extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Typography variant="h4" component="h1" align="center" color="primary" className={classes.title}>
+        <Typography variant="h4" component="h1" color="primary" className={classes.title}>
           Post Feed
         </Typography>
         <NewPost auth={auth} text={text} image={image} isAddingPost={isAddingPost} handleChange={this.handleChange} handleAddPost={this.handleAddPost} />
@@ -139,10 +139,12 @@ class PostFeed extends React.Component {
 
 const styles = theme => ({
   root: {
+    marginTop: theme.spacing.unit * 10,
     paddingBottom: theme.spacing.unit * 2
   },
   title: {
-    padding: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 4
   }
 });
 

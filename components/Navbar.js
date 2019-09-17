@@ -28,7 +28,7 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
             <Button>
               <ActiveLink href={`/profile/${user._id}`}>Profile</ActiveLink>
             </Button>
-            <Button onClick={signoutUser} variant="outlined">
+            <Button onClick={signoutUser} lassName={classes.singOutBtn}>
               Sign out
             </Button>
           </div>
@@ -51,6 +51,9 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
 const styles = theme => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1
+  },
+  singOutBtn: {
+    color: "#fff"
   },
   toolbarTitle: {
     flex: 1

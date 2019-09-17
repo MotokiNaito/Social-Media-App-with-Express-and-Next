@@ -15,7 +15,7 @@ const NewPost = ({ classes, auth, text, image, isAddingPost, handleChange, handl
     <CardHeader
       avatar={<Avatar src={auth.user.avatar} />}
       title={
-        <Typography variant="h6" component="h2">
+        <Typography variant="h6" component="h2" className={classes.cardTitle}>
           {auth.user.name}
         </Typography>
       }
@@ -56,7 +56,10 @@ const NewPost = ({ classes, auth, text, image, isAddingPost, handleChange, handl
 const styles = theme => ({
   card: {
     marginBottom: theme.spacing.unit * 3,
-    backgroundColor: theme.palette.primary.light
+    backgroundColor: theme.palette.primary.main
+  },
+  cardTitle: {
+    color: "#fff"
   },
   cardContent: {
     backgroundColor: "white"
@@ -66,7 +69,9 @@ const styles = theme => ({
   },
   cardActions: {
     display: "flex",
-    flexDirection: "row-reverse"
+    flexDirection: "row-reverse",
+    backgroundColor: "white",
+    borderTop: "1px solid #ccc"
   }
 });
 

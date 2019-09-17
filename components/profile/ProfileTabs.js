@@ -22,7 +22,7 @@ class ProfileTabs extends React.Component {
     return (
       <div>
         <AppBar position="static" color="default">
-          <Tabs value={tab} onChange={this.handleTabChange} indicatorColor="secondary" textColor="secondary" fullWidth>
+          <Tabs value={tab} onChange={this.handleTabChange} indicatorColor="secondary" textColor="secondary">
             <Tab label="Posts" />
             <Tab label="Following" />
             <Tab label="Followers" />
