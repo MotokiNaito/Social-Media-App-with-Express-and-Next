@@ -39,8 +39,7 @@ const Index = ({ classes, auth }) => (
             A Better Social Network
           </Typography>
           <Typography variant="h6" component="p">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime nesciunt suscipit voluptas harum commodi fugiat ab, rem facilis alias veritatis labore totam nihil! Distinctio veniam
-            consectetur vitae magni. Dolorem, necessitatibus.
+            Connect with friends, family, and acquaintances across the globe.
           </Typography>
           <Button className={classes.fabButton} variant="outlined" onClick={() => Router.push("/signup")}>
             Get Started
