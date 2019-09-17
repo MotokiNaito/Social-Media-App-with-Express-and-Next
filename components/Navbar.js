@@ -28,7 +28,7 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
             <Button>
               <ActiveLink href={`/profile/${user._id}`}>Profile</ActiveLink>
             </Button>
-            <Button onClick={signoutUser} lassName={classes.singOutBtn}>
+            <Button onClick={signoutUser} className={classes.singOutBtn}>
               Sign out
             </Button>
           </div>
