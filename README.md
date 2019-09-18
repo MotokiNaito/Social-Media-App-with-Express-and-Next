@@ -1,3 +1,13 @@
+Socail Media App using Next.js and Express.js
+(https://next-connect-app.herokuapp.com/)
+
+## Skills I Used
+
+1. React/Next.js
+2. Express.js/Node.js
+3. MongoDB
+4. Material UI
+
 ## Getting Started
 
 1. Clone this repo with `git clone git@github.com:MotokiNaito/Social-Media-App-with-Express-and-Next.git`
