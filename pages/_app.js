@@ -7,6 +7,8 @@ import JssProvider from "react-jss/lib/JssProvider";
 import Navbar from "../components/Navbar";
 import getPageContext from "../lib/getPageContext";
 
+import "../styles/main.scss";
+
 class MyApp extends App {
   constructor(props) {
     super(props);
