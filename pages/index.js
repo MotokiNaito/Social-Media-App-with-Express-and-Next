@@ -24,13 +24,12 @@ const Index = ({ auth }) => (
       <section className="main-unauth-page">
         <div className="main-txt">
           <img className="logo" alt="logo" src="/static/images/next-connect-logo.svg" />
-          <h3>Connect with friends, family, and acquaintances across the globe.</h3>
+          <h2>Connect with friends, family, and acquaintances across the globe.</h2>
           <button className="btn" onClick={() => Router.push("/signup")}>
             Get Started
           </button>
         </div>
         <div className="main-image">
-          <div className="bg-black" />
           <div className="bg-image" style={{ backgroundImage: `url('/static/images/main-image.jpg')` }} />
         </div>
       </section>
