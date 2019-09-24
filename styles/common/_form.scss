@@ -1,0 +1,51 @@
+.form-input {
+  margin-top: 3rem;
+}
+
+label {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  border: none;
+  border-bottom: 1px solid $color-body;
+  color: $color-body;
+  width: 100%;
+  font-size: 1.6rem;
+  letter-spacing: 1.6px;
+  padding: 0.2rem 0;
+  border-radius: 0 !important;
+  transition: 0.5s all;
+  background-color: transparent;
+  -webkit-appearance: none;
+  line-height: 1.8;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $color-body;
+  }
+
+  &::placeholder {
+    color: $color-grey-700;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color-grey-700;
+  }
+
+  &::-ms-input-placeholder {
+    color: $color-grey-700;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #fff inset;
+    -webkit-text-fill-color: $color-body !important;
+  }
+}

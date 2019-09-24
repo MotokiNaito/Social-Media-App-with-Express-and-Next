@@ -1,4 +1,5 @@
 import Router from "next/router";
+import Link from "next/link";
 
 import { signinUser } from "../lib/auth";
 
@@ -38,7 +39,9 @@ class Signin extends React.Component {
     return (
       <section className="sign-in-up-page">
         <div className="form-wrapper">
-          <img className="logo" alt="logo" src="/static/images/next-connect-logo-blue.svg" />
+          <Link href="/">
+            <img className="logo" alt="logo" src="/static/images/next-connect-logo-blue.svg" />
+          </Link>
           <h2>Sign in</h2>
 
           <form onSubmit={this.handleSubmit}>
@@ -58,20 +61,6 @@ class Signin extends React.Component {
           {error && <div className="form-error">{error}</div>}
         </div>
         <div className="bg-image" style={{ backgroundImage: `url('/static/images/sigininup.jpg')` }} />
-
-        {/* Error Snackbar */}
-        {/* {error && (
-          <Snackbar
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right"
-            }}
-            open={openError}
-            onClose={this.handleClose}
-            autoHideDuration={6000}
-            message={<span className={classes.snack}>{error}</span>}
-          />
-        )} */}
       </section>
     );
   }

@@ -1,12 +1,8 @@
-import withStyles from "@material-ui/core/styles/withStyles";
-
 import ActiveLink from "./ActiveLink";
 import { signoutUser } from "../lib/auth";
-import color from "@material-ui/core/colors/blueGrey";
 
-const Navbar = ({ classes, router, pageProps: { auth } }) => {
+const Navbar = ({ router, pageProps: { auth } }) => {
   const { user = {} } = auth || {};
-
   return (
     <header>
       {user._id ? (
@@ -21,27 +17,20 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
         </div>
       ) : (
         // UnAuth Navigation
-        <div className="signin-btn">
-          <ActiveLink href="/signin">Sign in</ActiveLink>
+        <div>
+          {router.route === "/signin" ? (
+            <div className="signin-btn">
+              <ActiveLink href="/signup">Sign up</ActiveLink>
+            </div>
+          ) : (
+            <div className="signin-btn">
+              <ActiveLink href="/signin">Sign in</ActiveLink>
+            </div>
+          )}
         </div>
       )}
     </header>
   );
 };
 
-const styles = theme => ({
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1
-  },
-  singOutBtn: {
-    color: "#fff"
-  },
-  toolbarTitle: {
-    flex: 1
-  },
-  icon: {
-    marginRight: theme.spacing.unit
-  }
-});
-
-export default withStyles(styles)(Navbar);
+export default Navbar;

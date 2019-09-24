@@ -1,4 +1,3 @@
-import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 import NewPost from "./NewPost";
@@ -116,9 +115,7 @@ class PostFeed extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Typography variant="h4" component="h1" color="primary" className={classes.title}>
-          Post Feed
-        </Typography>
+        <h1>Post Feed</h1>
         <NewPost auth={auth} text={text} image={image} isAddingPost={isAddingPost} handleChange={this.handleChange} handleAddPost={this.handleAddPost} />
         {posts.map(post => (
           <Post
