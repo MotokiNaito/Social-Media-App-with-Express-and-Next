@@ -1,0 +1,29 @@
+.new-post {
+  border: 1px solid #ccc;
+  margin-bottom: 2rem;
+  &__header {
+    background-color: $color-key;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__inner {
+      display: flex;
+      align-items: center;
+    }
+    h2 {
+      font-size: 1.6rem;
+      text-transform: uppercase;
+    }
+    &__avatar {
+      width: 40px;
+      margin-right: 1rem;
+    }
+  }
+}
+
+.image-input {
+  display: none;
+}
