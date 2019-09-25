@@ -1,3 +1,6 @@
+# About
+![logo](/static/images/next-connect-logo-blue.svg)
+
 Socail Media App using Next.js and Express.js
 (https://next-connect-app.herokuapp.com/)
 
