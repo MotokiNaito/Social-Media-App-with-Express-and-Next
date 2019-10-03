@@ -1,17 +1,3 @@
-import Badge from "@material-ui/core/Badge";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import Divider from "@material-ui/core/Divider";
-import Avatar from "@material-ui/core/Avatar";
-import Comment from "@material-ui/icons/Comment";
-import DeleteTwoTone from "@material-ui/icons/DeleteTwoTone";
-import Favorite from "@material-ui/icons/Favorite";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import withStyles from "@material-ui/core/styles/withStyles";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 import Link from "next/link";
 
@@ -56,89 +42,63 @@ class Post extends React.PureComponent {
     });
 
   render() {
-    const { classes, post, auth, isDeletingPost, handleDeletePost, handleToggleLike, handleAddComment, handleDeleteComment } = this.props;
+    const { post, auth, isDeletingPost, handleDeletePost, handleToggleLike, handleAddComment, handleDeleteComment } = this.props;
     const { isLiked, numLikes, comments } = this.state;
     const isPostCreator = post.postedBy._id === auth.user._id;
 
     return (
-      <Card className={classes.card}>
-        {/* Post Header */}
-        <CardHeader
-          avatar={<Avatar src={post.postedBy.avatar} />}
-          action={
-            isPostCreator && (
-              <IconButton disabled={isDeletingPost} onClick={() => handleDeletePost(post)}>
-                <DeleteTwoTone color="secondary" />
-              </IconButton>
-            )
-          }
-          title={
-            <Link href={`/profile/${post.postedBy._id}`}>
-              <a>{post.postedBy.name}</a>
-            </Link>
-          }
-          subheader={this.formatTimeCreated(post.createdAt)}
-          className={classes.cardHeader}
-        />
-        <CardContent className={classes.cardContent}>
-          <Typography variant="body1" className={classes.text}>
-            {post.text}
-          </Typography>
-          {/* Post Image */}
+      <article className="post">
+        <div className="post-header">
+          <div className="post-header__creater">
+            <div className="post-header__creater__img">
+              <img src={post.postedBy.avatar} />
+            </div>
+            <div className="post-header__creater__info">
+              <Link href={`/profile/${post.postedBy._id}`}>
+                <button>{post.postedBy.name}</button>
+              </Link>
+              <span>{this.formatTimeCreated(post.createdAt)}</span>
+            </div>
+          </div>
+          {isPostCreator && (
+            <button disabled={isDeletingPost} onClick={() => handleDeletePost(post)}>
+              <i class="material-icons">delete</i>
+            </button>
+          )}
+        </div>
+
+        <div className="post-content">
+          {post.text}
           {post.image && (
-            <div className={classes.imageContainer}>
-              <img className={classes.image} src={post.image} />
+            <div className="post-content__imgcontainer">
+              <img className="post-content__img" src={post.image} />
             </div>
           )}
-        </CardContent>
+        </div>
 
-        {/* Post Actions */}
-        <CardActions>
-          <IconButton onClick={() => handleToggleLike(post)} className={classes.button}>
-            <Badge badgeContent={numLikes} color="secondary">
-              {isLiked ? <Favorite className={classes.favoriteIcon} /> : <FavoriteBorder className={classes.favoriteIcon} />}
-            </Badge>
-          </IconButton>
-          <IconButton className={classes.button}>
-            <Badge badgeContent={comments.length} color="primary">
-              <Comment className={classes.commentIcon} />
-            </Badge>
-          </IconButton>
-        </CardActions>
-        <Divider />
+        <div className="post-actions">
+          <button onClick={() => handleToggleLike(post)}>
+            {isLiked ? (
+              <div className="post-actions__btn">
+                <i class="material-icons">favorite</i>
+                <span>{numLikes}</span>
+              </div>
+            ) : (
+              <div className="post-actions__btn">
+                <i class="material-icons">favorite_border</i>
+              </div>
+            )}
+          </button>
+          <button className="post-actions__btn">
+            <i class="material-icons">comment</i>
+            <span>{comments.length}</span>
+          </button>
+        </div>
 
-        {/* Comments Area */}
         <Comments auth={auth} postId={post._id} comments={comments} handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment} />
-      </Card>
+      </article>
     );
   }
 }
 
-const styles = theme => ({
-  card: {
-    marginBottom: theme.spacing.unit * 3
-  },
-  cardContent: {
-    backgroundColor: "white"
-  },
-  cardHeader: {
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    backgroundColor: "rgba(11, 61, 130, 0.06)"
-  },
-  imageContainer: {
-    textAlign: "center",
-    padding: theme.spacing.unit
-  },
-  image: {
-    height: 200
-  },
-  favoriteIcon: {
-    color: theme.palette.favoriteIcon
-  },
-  commentIcon: {
-    color: theme.palette.commentIcon
-  }
-});
-
-export default withStyles(styles)(Post);
+export default Post;

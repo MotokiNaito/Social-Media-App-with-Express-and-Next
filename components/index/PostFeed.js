@@ -114,7 +114,7 @@ class PostFeed extends React.Component {
     const { posts, text, image, isAddingPost, isDeletingPost } = this.state;
 
     return (
-      <div className={classes.root}>
+      <div className="post-feed">
         <h1>Post Feed</h1>
         <NewPost auth={auth} text={text} image={image} isAddingPost={isAddingPost} handleChange={this.handleChange} handleAddPost={this.handleAddPost} />
         {posts.map(post => (

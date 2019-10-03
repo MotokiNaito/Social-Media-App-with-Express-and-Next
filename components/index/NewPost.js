@@ -10,16 +10,16 @@ const NewPost = ({ auth, text, image, isAddingPost, handleChange, handleAddPost 
       </div>
     </div>
     <div className="new-post__content">
-      <input value={text} name="text" placeholder={`What's on your mind, ${auth.user.name}?`} onChange={handleChange} />
+      <input value={text} type="text" name="text" placeholder={`What's on your mind, ${auth.user.name}?`} onChange={handleChange} />
       <input accept="image/*" name="image" id="image" onChange={handleChange} className="image-input" type="file" />
       <label htmlFor="image">
-        <p>Add a photo</p>
+        <p className="new-post__imagebtn">Add a photo</p>
       </label>
       <span>{image && image.name}</span>
+      <button className="btn" disabled={!text || isAddingPost} onClick={handleAddPost}>
+        {isAddingPost ? "Sending" : "Post"}
+      </button>
     </div>
-    <button className="btn" disabled={!text || isAddingPost} onClick={handleAddPost}>
-      {isAddingPost ? "Sending" : "Post"}
-    </button>
   </section>
 );
 

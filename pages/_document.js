@@ -41,6 +41,7 @@ class MyDocument extends Document {
     return (
       <html lang="en" dir="ltr">
         <Head>
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
           <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
           <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
           <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
