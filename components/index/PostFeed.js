@@ -1,5 +1,3 @@
-import withStyles from "@material-ui/core/styles/withStyles";
-
 import NewPost from "./NewPost";
 import Post from "./Post";
 import { addPost, deletePost, likePost, unlikePost, getPostFeed, addComment, deleteComment } from "../../lib/api";
@@ -110,7 +108,7 @@ class PostFeed extends React.Component {
   };
 
   render() {
-    const { classes, auth } = this.props;
+    const { auth } = this.props;
     const { posts, text, image, isAddingPost, isDeletingPost } = this.state;
 
     return (
@@ -134,15 +132,4 @@ class PostFeed extends React.Component {
   }
 }
 
-const styles = theme => ({
-  root: {
-    marginTop: theme.spacing.unit * 10,
-    paddingBottom: theme.spacing.unit * 2
-  },
-  title: {
-    paddingBottom: theme.spacing.unit * 2,
-    paddingTop: theme.spacing.unit * 4
-  }
-});
-
-export default withStyles(styles)(PostFeed);
+export default PostFeed;
