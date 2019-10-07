@@ -62,7 +62,7 @@ class Post extends React.PureComponent {
           </div>
           {isPostCreator && (
             <button disabled={isDeletingPost} onClick={() => handleDeletePost(post)}>
-              <i class="material-icons">delete</i>
+              <i className="material-icons">delete</i>
             </button>
           )}
         </div>
@@ -80,17 +80,17 @@ class Post extends React.PureComponent {
           <button onClick={() => handleToggleLike(post)}>
             {isLiked ? (
               <div className="post-actions__btn">
-                <i class="material-icons">favorite</i>
+                <i className="material-icons">favorite</i>
                 <span>{numLikes}</span>
               </div>
             ) : (
               <div className="post-actions__btn">
-                <i class="material-icons">favorite_border</i>
+                <i className="material-icons">favorite_border</i>
               </div>
             )}
           </button>
           <button className="post-actions__btn">
-            <i class="material-icons">comment</i>
+            <i className="material-icons">comment</i>
             <span>{comments.length}</span>
           </button>
         </div>

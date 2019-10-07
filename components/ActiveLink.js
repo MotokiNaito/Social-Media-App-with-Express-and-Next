@@ -16,17 +16,7 @@ const ActiveLink = ({ router, href, children }) => {
 
   return (
     <div>
-      <a
-        href={href}
-        onClick={handleClick}
-        style={{
-          textDecoration: "none",
-          margin: 0,
-          padding: 0,
-          fontWeight: isCurrentPath ? "bold" : "normal",
-          color: "#fff"
-        }}
-      >
+      <a href={href} onClick={handleClick} className="active-link">
         {children}
       </a>
     </div>

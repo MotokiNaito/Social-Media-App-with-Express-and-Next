@@ -1,7 +1,33 @@
+header {
+  a {
+    color: #fff;
+  }
+}
+
 .signin-btn {
   position: fixed;
   top: 2rem;
   right: 3rem;
   z-index: 10;
   color: #fff;
+}
+
+.auth-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5%;
+
+  a {
+    color: $color-body;
+    margin-left: 2rem;
+  }
+
+  &__left {
+    width: 60px;
+  }
+
+  &__right {
+    display: flex;
+  }
 }

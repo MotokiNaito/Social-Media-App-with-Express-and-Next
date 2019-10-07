@@ -1,10 +1,3 @@
-import CardHeader from "@material-ui/core/CardHeader";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Input from "@material-ui/core/Input";
-import Avatar from "@material-ui/core/Avatar";
-import Delete from "@material-ui/icons/Delete";
-import withStyles from "@material-ui/core/styles/withStyles";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 import Link from "next/link";
 
@@ -33,13 +26,17 @@ class Comments extends React.Component {
     return (
       <div>
         <Link href={`/profile/${comment.postedBy._id}`}>
-          <a>{comment.postedBy.name}</a>
+          <span>{comment.postedBy.name}</span>
         </Link>
         <br />
         {comment.text}
-        <span className={classes.commentDate}>
+        <span>
           {this.formatTimeCreated(comment.createdAt)}
-          {isCommentCreator && <Delete color="secondary" className={classes.commentDelete} onClick={() => handleDeleteComment(postId, comment)} />}
+          {isCommentCreator && (
+            <button onClick={() => handleDeleteComment(postId, comment)}>
+              <i className="material-icons">delete</i>
+            </button>
+          )}
         </span>
       </div>
     );
@@ -52,55 +49,33 @@ class Comments extends React.Component {
     });
 
   render() {
-    const { auth, comments, classes } = this.props;
+    const { auth, comments } = this.props;
     const { text } = this.state;
 
     return (
-      <div className={classes.comments}>
-        {/* Comment Input */}
-        <CardHeader
-          avatar={<Avatar className={classes.smallAvatar} src={auth.user.avatar} />}
-          title={
+      <div className="comments">
+        <div className="comment-action">
+          <div className="comment-action__img">
+            <img src={auth.user.avatar} />
+          </div>
+          <div className="comment-action__form">
             <form onSubmit={this.handleSubmit}>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="add-comment">Add comments</InputLabel>
-                <Input id="add-comment" name="text" placeholder="Reply to this post" value={text} onChange={this.handleChange} />
-              </FormControl>
+              <input type="text" id="add-comment" name="text" placeholder="Add comments" value={text} onChange={this.handleChange} />
             </form>
-          }
-          className={classes.cardHeader}
-        />
+          </div>
+        </div>
 
-        {/* Comments */}
         {comments.map(comment => (
-          <CardHeader key={comment._id} avatar={<Avatar className={classes.smallAvatar} src={comment.postedBy.avatar} />} title={this.showComment(comment)} className={classes.cardHeader} />
+          <div className="comment" key={comment._id}>
+            <div className="comment__img">
+              <img src={comment.postedBy.avatar} />
+            </div>
+            <div className="comment__txt">{this.showComment(comment)}</div>
+          </div>
         ))}
       </div>
     );
   }
 }
 
-const styles = theme => ({
-  comments: {
-    backgroundColor: "rgba(11, 61, 130, 0.06)"
-  },
-  cardHeader: {
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit
-  },
-  smallAvatar: {
-    margin: 10
-  },
-  commentDate: {
-    display: "block",
-    color: "gray",
-    fontSize: "0.8em"
-  },
-  commentDelete: {
-    fontSize: "1.6em",
-    verticalAlign: "middle",
-    cursor: "pointer"
-  }
-});
-
-export default withStyles(styles)(Comments);
+export default Comments;

@@ -1,0 +1,30 @@
+.comments {
+  background-color: $color-grey-200;
+  border: 1px solid #ccc;
+  padding: 2rem;
+}
+
+.comment-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__img {
+    width: 30px;
+  }
+  &__form {
+    width: calc(95% - 30px);
+  }
+}
+
+.comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  &__img {
+    width: 30px;
+  }
+  &__txt {
+    width: calc(95% - 30px);
+  }
+}
