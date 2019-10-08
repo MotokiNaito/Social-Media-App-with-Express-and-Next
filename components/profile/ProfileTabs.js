@@ -1,8 +1,3 @@
-import AppBar from "@material-ui/core/AppBar";
-import Typography from "@material-ui/core/Typography";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-
 import Post from "../../components/index/Post";
 import FollowTab from "../../components/profile/FollowTab";
 
@@ -11,8 +6,8 @@ class ProfileTabs extends React.Component {
     tab: 0
   };
 
-  handleTabChange = (event, value) => {
-    this.setState({ tab: value });
+  handleTabChange = e => {
+    this.setState({ tab: Number(e.target.dataset.tab) });
   };
 
   render() {
@@ -21,15 +16,19 @@ class ProfileTabs extends React.Component {
 
     return (
       <div>
-        <AppBar position="static" color="default">
-          <Tabs value={tab} onChange={this.handleTabChange} indicatorColor="secondary" textColor="secondary">
-            <Tab label="Posts" />
-            <Tab label="Following" />
-            <Tab label="Followers" />
-          </Tabs>
-        </AppBar>
+        <div className="tab-container">
+          <button data-tab="0" onClick={this.handleTabChange}>
+            Posts
+          </button>
+          <button data-tab="1" onClick={this.handleTabChange}>
+            Following
+          </button>
+          <button data-tab="2" onClick={this.handleTabChange}>
+            Followers
+          </button>
+        </div>
         {tab === 0 && (
-          <TabContainer>
+          <div>
             {posts.map(post => (
               <Post
                 key={post._id}
@@ -42,27 +41,21 @@ class ProfileTabs extends React.Component {
                 handleDeleteComment={handleDeleteComment}
               />
             ))}
-          </TabContainer>
+          </div>
         )}
         {tab === 1 && (
-          <TabContainer>
+          <div>
             <FollowTab users={user.following} />
-          </TabContainer>
+          </div>
         )}
         {tab === 2 && (
-          <TabContainer>
+          <div>
             <FollowTab users={user.followers} />
-          </TabContainer>
+          </div>
         )}
       </div>
     );
   }
 }
-
-const TabContainer = ({ children }) => (
-  <Typography component="div" style={{ padding: "1em" }}>
-    {children}
-  </Typography>
-);
 
 export default ProfileTabs;

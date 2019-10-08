@@ -1,0 +1,30 @@
+.profile {
+  max-width: 800px;
+  margin: 6rem auto;
+  width: 80%;
+  h1 {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
+
+.profile-info {
+  text-align: center;
+  &__avatar {
+    width: 80px;
+    margin: 0 auto;
+  }
+  h3 {
+    font-weight: bold;
+    margin: 1rem 0 0.5rem;
+  }
+  a {
+    display: block;
+  }
+}
+
+.profile-edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

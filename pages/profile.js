@@ -1,16 +1,3 @@
-import Paper from "@material-ui/core/Paper";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import Divider from "@material-ui/core/Divider";
-import Edit from "@material-ui/icons/Edit";
-import withStyles from "@material-ui/core/styles/withStyles";
 import format from "date-fns/format";
 import Link from "next/link";
 
@@ -115,45 +102,43 @@ class Profile extends React.Component {
   formatDate = date => format(date, "dddd, MMMM Do, YYYY");
 
   render() {
-    const { classes, auth } = this.props;
+    const { auth } = this.props;
     const { isLoading, posts, user, isAuth, isFollowing, isDeletingPost } = this.state;
 
     return (
-      <Paper className={classes.root} elevation={4}>
+      <section className="profile">
         <h1>Profile</h1>
 
         {isLoading ? (
-          <div className={classes.progressContainer}>
-            <CircularProgress className={classes.progress} size={55} thickness={5} />
-          </div>
+          <div className="loading-profile">Loading now...</div>
         ) : (
-          <List dense>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar src={user.avatar} className={classes.bigAvatar} />
-              </ListItemAvatar>
-              <ListItemText primary={user.name} secondary={user.email} />
+          <div className="profile-inner">
+            <div>
+              <div className="profile-info">
+                <div className="profile-info__avatar">
+                  <img src={user.avatar} />
+                </div>
+                <div className="profile-info__text">
+                  <h3>{user.name}</h3>
+                  <a href={`mailto:${user.email}`}>{user.email}</a>
+                  <span>{`Joined: ${this.formatDate(user.createdAt)}`}</span>
+                </div>
+              </div>
 
               {/* Auth - Edit Buttons / UnAuth - Follow Buttons */}
               {isAuth ? (
-                <ListItemSecondaryAction>
+                <div className="profile-edit">
                   <Link href="/edit-profile">
-                    <a>
-                      <IconButton color="primary">
-                        <Edit />
-                      </IconButton>
-                    </a>
+                    <button>
+                      <i className="material-icons">edit</i>
+                    </button>
                   </Link>
                   <DeleteUser user={user} />
-                </ListItemSecondaryAction>
+                </div>
               ) : (
                 <FollowUser isFollowing={isFollowing} toggleFollow={this.toggleFollow} />
               )}
-            </ListItem>
-            <Divider />
-            <ListItem>
-              <ListItemText primary={user.about} secondary={`Joined: ${this.formatDate(user.createdAt)}`} />
-            </ListItem>
+            </div>
 
             {/* Display User's Posts, Following, and Followers */}
             <ProfileTabs
@@ -166,41 +151,13 @@ class Profile extends React.Component {
               handleAddComment={this.handleAddComment}
               handleDeleteComment={this.handleDeleteComment}
             />
-          </List>
+          </div>
         )}
-      </Paper>
+      </section>
     );
   }
 }
 
-const styles = theme => ({
-  root: {
-    padding: theme.spacing.unit * 3,
-    marginTop: theme.spacing.unit * 5,
-    margin: "auto",
-    [theme.breakpoints.up("sm")]: {
-      width: 600
-    }
-  },
-  title: {
-    color: theme.palette.primary.main
-  },
-  progress: {
-    margin: theme.spacing.unit * 2
-  },
-  progressContainer: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column"
-  },
-  bigAvatar: {
-    width: 60,
-    height: 60,
-    margin: 10
-  }
-});
-
 Profile.getInitialProps = authInitialProps(true);
 
-export default withStyles(styles)(Profile);
+export default Profile;
