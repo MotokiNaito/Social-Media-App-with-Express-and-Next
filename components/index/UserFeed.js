@@ -1,16 +1,3 @@
-import Divider from "@material-ui/core/Divider";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import Button from "@material-ui/core/Button";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import Snackbar from "@material-ui/core/Snackbar";
-import AccountBox from "@material-ui/icons/AccountBox";
-import withStyles from "@material-ui/core/styles/withStyles";
 import Link from "next/link";
 
 import { getUserFeed, followUser } from "../../lib/api";
@@ -42,72 +29,38 @@ class UserFeed extends React.Component {
   handleClose = () => this.setState({ openSuccess: false });
 
   render() {
-    const { classes } = this.props;
     const { users, openSuccess, followingMessage } = this.state;
 
     return (
-      <div>
-        <Typography type="title" variant="h6" component="h2" align="center">
-          Browse Users
-        </Typography>
-        <Divider />
+      <section>
+        <h3>Browse Users</h3>
 
-        {/* Users List */}
-        <List>
+        <ul className="browse-users">
           {users.map((user, i) => (
-            <span key={user._id}>
-              <ListItem>
-                <ListItemAvatar className={classes.avatar}>
-                  <Avatar src={user.avatar} />
-                </ListItemAvatar>
-                <ListItemText primary={user.name} />
-                <ListItemSecondaryAction className={classes.follow}>
-                  <Link href={`/profile/${user._id}`}>
-                    <IconButton variant="contained" color="secondary" className={classes.viewButton}>
-                      <AccountBox />
-                    </IconButton>
-                  </Link>
-                  <Button variant="contained" color="primary" onClick={() => this.handleFollow(user, i)}>
-                    Follow
-                  </Button>
-                </ListItemSecondaryAction>
-              </ListItem>
-            </span>
+            <li className="user" key={user._id}>
+              <div className="user__avatar">
+                <span>
+                  <img src={user.avatar} />
+                </span>
+                <span className="user__name">{user.name}</span>
+              </div>
+              <div className="user__follow">
+                <Link href={`/profile/${user._id}`}>
+                  <button>
+                    <i className="material-icons">person</i>
+                  </button>
+                </Link>
+                <button className="btn" onClick={() => this.handleFollow(user, i)}>
+                  Follow
+                </button>
+              </div>
+            </li>
           ))}
-        </List>
-
-        {/* Follow User Snackbar */}
-        <Snackbar
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right"
-          }}
-          open={openSuccess}
-          onClose={this.handleClose}
-          autoHideDuration={6000}
-          message={<span className={classes.snack}>{followingMessage}</span>}
-        />
-      </div>
+        </ul>
+        <div className={`user-snackbar ${openSuccess ? "is-success" : ""}`}>{followingMessage}</div>
+      </section>
     );
   }
 }
 
-const styles = theme => ({
-  root: {
-    padding: theme.spacing.unit
-  },
-  avatar: {
-    marginRight: theme.spacing.unit
-  },
-  follow: {
-    right: theme.spacing.unit * 2
-  },
-  snack: {
-    color: theme.palette.primary.light
-  },
-  viewButton: {
-    verticalAlign: "middle"
-  }
-});
-
-export default withStyles(styles)(UserFeed);
+export default UserFeed;

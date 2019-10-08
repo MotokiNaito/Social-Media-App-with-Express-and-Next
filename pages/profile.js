@@ -120,9 +120,7 @@ class Profile extends React.Component {
 
     return (
       <Paper className={classes.root} elevation={4}>
-        <Typography variant="h4" component="h1" align="center" className={classes.title} gutterBottom>
-          Profile
-        </Typography>
+        <h1>Profile</h1>
 
         {isLoading ? (
           <div className={classes.progressContainer}>
