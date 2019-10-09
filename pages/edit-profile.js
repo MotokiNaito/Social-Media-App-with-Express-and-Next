@@ -55,7 +55,7 @@ class EditProfile extends React.Component {
     updateUser(this.state._id, this.userData)
       .then(updatedUser => {
         this.setState({ updatedUser, openSuccess: true }, () => {
-          setTimeout(() => Router.push(`/profile/${this.state._id}`), 6000);
+          setTimeout(() => Router.push(`/profile/${this.state._id}`), 4000);
         });
       })
       .catch(this.showError);
@@ -78,11 +78,12 @@ class EditProfile extends React.Component {
         <h1>Edit Profile</h1>
 
         <form onSubmit={this.handleSubmit}>
-          {isLoading ? <i className="material-icons">face</i> : <img src={avatarPreview || avatar} />}
+          <div className="edit-profile__avatar">{isLoading ? <i className="material-icons">face</i> : <img src={avatarPreview || avatar} />}</div>
           <input className="input-file" type="file" name="avatar" id="avatar" accept="image/*" onChange={this.handleChange} />
           <label htmlFor="avatar">
-            <button className="btn">
-              Upload Image <i class="material-icons">cloud_upload</i>
+            <button className="upload-btn btn">
+              <span>Upload Image</span>
+              <i class="material-icons">cloud_upload</i>
             </button>
           </label>
           <span>{avatar && avatar.name}</span>

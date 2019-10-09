@@ -1,6 +1,36 @@
 .edit-profile {
   width: 80%;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   text-align: center;
+
+  &__avatar {
+    width: 40px;
+    margin: 2rem auto;
+  }
+
+  .input-file {
+    display: none;
+  }
+
+  .upload-btn {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    span {
+      margin-right: 1rem;
+    }
+  }
+
+  input {
+    margin-bottom: 2rem;
+  }
+
+  &__error {
+    display: block;
+    color: red;
+    margin-top: 1rem;
+  }
 }
