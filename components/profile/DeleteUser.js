@@ -1,12 +1,3 @@
-import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Delete from "@material-ui/icons/Delete";
-
 import { signoutUser } from "../../lib/auth";
 import { deleteUser } from "../../lib/api";
 
@@ -39,26 +30,27 @@ class DeleteUser extends React.Component {
 
     return (
       <div>
-        {/* Delete Button */}
-        <IconButton onClick={this.handleOpen} color="secondary">
-          <Delete />
-        </IconButton>
-
-        {/* Delete User Dialog */}
-        <Dialog open={open} onClose={this.handleClose}>
-          <DialogTitle>Delete Account</DialogTitle>
-          <DialogContent>
-            <DialogContentText>Confirm to delete your account</DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.handleDeleteUser} color="secondary" disabled={isDeleting}>
-              {isDeleting ? "Deleting" : "Confirm"}
-            </Button>
-          </DialogActions>
-        </Dialog>
+        <button onClick={this.handleOpen}>
+          <i className="material-icons">delete</i>
+        </button>
+        {open ? (
+          <div className="delete-dialog">
+            <div className="delete-dialog__inner">
+              <h3>Delete Account</h3>
+              <p>Confirm to delete your account</p>
+              <div className="delete-dialog__btns">
+                <button className="btn" onClick={this.handleClose}>
+                  Cancel
+                </button>
+                <button className="btn" onClick={this.handleDeleteUser} disabled={isDeleting}>
+                  {isDeleting ? "Deleting" : "Confirm"}
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     );
   }
