@@ -1,0 +1,14 @@
+.follow-tab-lists {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.follow-tab-list {
+  width: 25%;
+  padding: 2rem;
+  text-align: center;
+  img {
+    width: 100px;
+    margin: 0 auto 1rem;
+  }
+}
