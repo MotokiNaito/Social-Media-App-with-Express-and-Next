@@ -74,16 +74,17 @@ class Signup extends React.Component {
           {error && <div className="form-error">{error}</div>}
         </div>
         <div className="bg-image" style={{ backgroundImage: `url('/static/images/sign-up.jpg')` }} />
-
-        <div className={`dialog-container ${openSuccess ? "is-open" : ""}`}>
-          <div className="dialog-container__inner">
-            <h2>New Account</h2>
-            <p>User {createdUser} successfully created!</p>
-            <Link href="/signin">
-              <button className="btn">Sign in</button>
-            </Link>
+        {openSuccess && (
+          <div className="dialog-container">
+            <div className="dialog-container__inner">
+              <h2>New Account</h2>
+              <p>User {createdUser} successfully created!</p>
+              <Link href="/signin">
+                <button className="btn">Sign in</button>
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
       </section>
     );
   }

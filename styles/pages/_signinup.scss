@@ -43,11 +43,7 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 100;
-  display: none;
-
-  &.is-open {
-    display: block;
-  }
+  text-align: center;
 
   &__inner {
     position: absolute;
