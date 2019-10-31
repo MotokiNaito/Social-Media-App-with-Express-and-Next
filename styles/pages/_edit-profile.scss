@@ -14,11 +14,13 @@
   }
 
   .upload-btn {
+    width: 160px;
     display: flex;
     align-items: center;
     margin: 0 auto;
     font-size: 1rem;
     padding: 1rem 2rem;
+    cursor: pointer;
     span {
       margin-right: 1rem;
     }

@@ -1,19 +1,19 @@
-import Router from "next/router";
+import Router from 'next/router';
 
-import { authInitialProps } from "../lib/auth";
-import { getAuthUser, updateUser } from "../lib/api";
+import { authInitialProps } from '../lib/auth';
+import { getAuthUser, updateUser } from '../lib/api';
 
 class EditProfile extends React.Component {
   state = {
-    _id: "",
-    name: "",
-    email: "",
-    about: "",
-    avatar: "",
-    avatarPreview: "",
+    _id: '',
+    name: '',
+    email: '',
+    about: '',
+    avatar: '',
+    avatarPreview: '',
     openSuccess: false,
     openError: false,
-    error: "",
+    error: '',
     updatedUser: null,
     isSaving: false,
     isLoading: true
@@ -39,7 +39,7 @@ class EditProfile extends React.Component {
   handleChange = event => {
     let inputValue;
 
-    if (event.target.name === "avatar") {
+    if (event.target.name === 'avatar') {
       inputValue = event.target.files[0];
       this.setState({ avatarPreview: this.createPreviewImage(inputValue) });
     } else {
@@ -71,7 +71,7 @@ class EditProfile extends React.Component {
   };
 
   render() {
-    const { name, email, avatar, about, avatarPreview, isLoading, isSaving, updatedUser, openSuccess, openError, error } = this.state;
+    const { name, email, avatar, about, avatarPreview, isLoading, isSaving, updatedUser, openSuccess, error } = this.state;
 
     return (
       <div className="edit-profile">
@@ -79,12 +79,12 @@ class EditProfile extends React.Component {
 
         <form onSubmit={this.handleSubmit}>
           <div className="edit-profile__avatar">{isLoading ? <i className="material-icons">face</i> : <img src={avatarPreview || avatar} />}</div>
-          <input className="input-file" type="file" name="avatar" id="avatar" accept="image/*" onChange={this.handleChange} />
           <label htmlFor="avatar">
-            <button className="upload-btn btn">
+            <div className="upload-btn btn">
+              <input className="input-file" type="file" name="avatar" id="avatar" accept="image/*" onChange={this.handleChange} />
               <span>Upload Image</span>
-              <i class="material-icons">cloud_upload</i>
-            </button>
+              <i className="material-icons">cloud_upload</i>
+            </div>
           </label>
           <span>{avatar && avatar.name}</span>
           <input placeholder="Name" type="text" name="name" value={name} onChange={this.handleChange} />
@@ -92,7 +92,7 @@ class EditProfile extends React.Component {
           <input placeholder="Email" type="email" name="email" value={email} onChange={this.handleChange} />
 
           <button className="btn" type="submit" disabled={isSaving || isLoading}>
-            {isSaving ? "Saving..." : "Save"}
+            {isSaving ? 'Saving...' : 'Save'}
           </button>
         </form>
         {error && <span className="edit-profile__error">{error}</span>}
